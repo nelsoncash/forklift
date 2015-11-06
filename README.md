@@ -8,19 +8,30 @@
 All configuration happens in a single YAML file
 
 ```
+tests:
 - name: "example/frontend"
   dockerfile_path: "~/path/to/first/dockerfile"
   entrypoint: "/usr/bin/run-build-a"
 - name: "example/backend"
   dockerfile_path: "~/path/to/second/dockerfile"
   entrypoint: "/usr/bin/run-build-b"
+success:
+  script: "/run/on/sucess"
+fail
+  script: "run/on/fail"
   ```
   
-The yaml file is a list of containers with a couple of properties. Each image takes 3 arguments
+The yaml file is a list of _tests_ with a couple of properties. Each image takes 3 arguments
 
 1. **name** The name of the docker container you want to build and run
 2. **dockerfile_path** The path to the dockerfile that configures the image you want to build and run
 3. **entrypoint** The entrypoint to the docker container if you want to overwrite the existing entrypoint
+
+Additionally, tou you can configure scripts that execute one both success and failure of the builds
+
+* success: a path to a script to run on success of all docker build and run commands
+* fail: a path to a script to run on failure of a single docker build or run command
+
 
 
 ## Running Forklift
@@ -32,9 +43,9 @@ This should begin building the docker images and running them in containers one 
 
 ## Dependencies
 
-* (pyyaml)[http://pyyaml.org/]
+* [pyyaml](http://pyyaml.org/)
 * Python 2.7 or higher
-* (Docker engine)[http://docs.docker.com/]
+* [Docker engine](http://docs.docker.com/)
 
 
 
