@@ -37,6 +37,8 @@ def main(config_path):
         else:
           print "TESTS FAILED at {}".format(test['name'])
           break
+      else:
+        print "TESTS PASS for container {}".format(test['name'])
     if 'success' in config and fail == False:
       os.system(config['success']['script'])
       return
