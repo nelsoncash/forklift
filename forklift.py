@@ -7,13 +7,13 @@ import os
 from subprocess import call
 
 
-USAGE = """%prog DOCKER_PATH
+USAGE = """%prog CONFIG_PATH
 Run isolated tests as docker containers.
-DOCKER_PATH    Path to the yaml file of docker containers to run."""
+CONFIG_PATH    Path to the yaml file of docker containers to run."""
 
-def main(docker_path):
-  print docker_path
-  with open(docker_path, 'r') as stream:
+def main(config_path):
+  print config_path
+  with open(config_path, 'r') as stream:
     config = yaml.load(stream)
     print config
     for test in config:
@@ -36,5 +36,5 @@ if __name__ == '__main__':
     print 'Error: At least 1 arguments required.'
     parser.print_help()
     sys.exit(1)
-  DOCKER_PATH = args[0]
-  main(DOCKER_PATH)
+  CONFIG_PATH = args[0]
+  main(CONFIG_PATH)
