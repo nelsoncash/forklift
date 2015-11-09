@@ -1,0 +1,11 @@
+tests:
+- name: "example/frontend"
+  dockerfile_path: "~/path/to/first/dockerfile"
+  entrypoint: "/usr/bin/run-build-a"
+- name: "example/backend"
+  dockerfile_path: "~/path/to/second/dockerfile"
+  entrypoint: "/usr/bin/run-build-b"
+success:
+  script: "/run/on/sucess"
+fail
+  script: "run/on/fail"
